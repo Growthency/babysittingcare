@@ -25,7 +25,6 @@ const RegisterPage = () => {
     setError("");
     setPending(true);
 
-    // ১. পাসওয়ার্ড ভ্যালিডেশন চেক (Requirement অনুযায়ী)
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
     if (!passwordRegex.test(info.password)) {
       setError(
@@ -57,7 +56,6 @@ const RegisterPage = () => {
       });
 
       if (res.ok) {
-        // সফল হলে লগিন পেজে পাঠাবো
         setPending(false);
         const form = e.target;
         form.reset();

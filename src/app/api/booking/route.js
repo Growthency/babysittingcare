@@ -8,10 +8,8 @@ export async function POST(req) {
     const data = await req.json();
     await connectDB();
 
-    // ১. বুকিং ডাটাবেসে সেভ করা
     const newBooking = await Booking.create(data);
 
-    // ২. ইমেইল ট্রান্সপোর্টার সেটআপ
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -20,7 +18,6 @@ export async function POST(req) {
       },
     });
 
-    // ৩. ইমেইল এর ডিজাইন (Invoice Design)
     const mailOptions = {
       from: process.env.EMAIL_USER,
       to: data.userEmail,
@@ -48,7 +45,6 @@ export async function POST(req) {
       `,
     };
 
-    // ৪. ইমেইল পাঠানো
     await transporter.sendMail(mailOptions);
 
     return NextResponse.json(
@@ -64,7 +60,6 @@ export async function POST(req) {
   }
 }
 
-// GET মেথড (যেমন ছিল তেমনই থাকবে)
 export async function GET(req) {
   try {
     const { searchParams } = new URL(req.url);

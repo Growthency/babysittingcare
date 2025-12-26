@@ -2,12 +2,10 @@ import Link from "next/link";
 import { services } from "@/lib/data";
 
 export default function Home() {
-  // প্রথম ৬টা সার্ভিস দেখাবো
   const featuredServices = services.slice(0, 6);
 
   return (
     <div>
-      {/* 1. Banner Section */}
       <section className="relative bg-gradient-to-r from-blue-600 to-cyan-500 text-white rounded-xl overflow-hidden mb-16 py-24 px-6 text-center shadow-lg">
         <div className="relative z-10 max-w-3xl mx-auto">
           <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
@@ -26,7 +24,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. Services Overview (Top 6) */}
       <section className="mb-20">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
@@ -81,7 +78,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3. About / Mission Section */}
       <section className="bg-white rounded-2xl shadow-lg p-8 md:p-12 mb-16 flex flex-col md:flex-row items-center gap-12 border border-gray-100">
         <div className="md:w-1/2 relative">
           <div className="absolute -inset-4 bg-blue-100 rounded-full blur-3xl opacity-50"></div>

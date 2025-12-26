@@ -4,7 +4,7 @@ import { signIn } from "next-auth/react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { FcGoogle } from "react-icons/fc"; // গুগল আইকনের জন্য
+import { FcGoogle } from "react-icons/fc";
 
 const LoginPage = () => {
   const [info, setInfo] = useState({ email: "", password: "" });
@@ -34,7 +34,7 @@ const LoginPage = () => {
         return;
       }
 
-      router.push("/"); // লগিন সফল হলে হোমপেজে পাঠাবে
+      router.push("/");
       router.refresh();
     } catch (err) {
       setPending(false);
@@ -83,7 +83,6 @@ const LoginPage = () => {
           <span className="h-px bg-gray-300 w-full"></span>
         </div>
 
-        {/* Google Login Button */}
         <button
           onClick={() => signIn("google", { callbackUrl: "/" })}
           className="w-full flex items-center justify-center gap-2 border p-2 rounded hover:bg-gray-50 transition"

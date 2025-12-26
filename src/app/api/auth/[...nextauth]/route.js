@@ -1,19 +1,17 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import GoogleProvider from "next-auth/providers/google"; // ১. গুগল ইমপোর্ট
+import GoogleProvider from "next-auth/providers/google";
 import connectDB from "@/lib/db";
 import User from "@/models/User";
 import bcrypt from "bcryptjs";
 
 const handler = NextAuth({
   providers: [
-    // ২. গুগল প্রোভাইডার সেটআপ
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
 
-    // ৩. ইমেইল/পাসওয়ার্ড প্রোভাইডার (আগের মতো)
     CredentialsProvider({
       name: "Credentials",
       credentials: {},
@@ -40,7 +38,7 @@ const handler = NextAuth({
   pages: {
     signIn: "/login",
   },
-  // ৪. গুগল দিয়ে লগিন করলে ডাটাবেসে ইউজার সেভ করার লজিক
+
   callbacks: {
     async signIn({ user, account }) {
       if (account.provider === "google") {
@@ -60,7 +58,7 @@ const handler = NextAuth({
                 body: JSON.stringify({
                   name,
                   email,
-                  password: "google-login-user", // ডামি পাসওয়ার্ড
+                  password: "google-login-user",
                 }),
               }
             );

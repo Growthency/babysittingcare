@@ -42,7 +42,6 @@ export default function BookingPage({ params }) {
     setBookingData({ ...bookingData, [e.target.name]: e.target.value });
   };
 
-  // --- এই অংশটা আসল কাজ করছে ---
   const handleConfirmBooking = async (e) => {
     e.preventDefault();
 
@@ -68,7 +67,7 @@ export default function BookingPage({ params }) {
       });
 
       if (res.ok) {
-        alert("Booking Confirmed Successfully!"); // এই মেসেজটা আসবে
+        alert("Booking Confirmed Successfully!"); 
         router.push("/my-bookings");
         router.refresh();
       } else {

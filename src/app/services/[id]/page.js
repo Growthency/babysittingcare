@@ -2,9 +2,8 @@ import { services } from "@/lib/data";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-// ১. ডায়নামিক মেটাডাটা (Next.js 15 স্টাইল)
 export async function generateMetadata({ params }) {
-  const { id } = await params; // এখানে await ব্যবহার করতে হবে
+  const { id } = await params;
   const service = services.find((s) => s._id === id);
   if (!service) {
     return {
@@ -17,14 +16,11 @@ export async function generateMetadata({ params }) {
   };
 }
 
-// ২. মেইন পেজ কম্পোনেন্ট
 export default async function ServiceDetails({ params }) {
-  const { id } = await params; // এখানেও await করতে হবে
+  const { id } = await params;
 
-  // ইউজার যে আইডিতে ক্লিক করেছে, সেই ডাটা খুঁজে বের করছি
   const service = services.find((s) => s._id === id);
 
-  // যদি সার্ভিস না পাওয়া যায়, 404 পেজে পাঠাবো
   if (!service) {
     return notFound();
   }
@@ -32,7 +28,6 @@ export default async function ServiceDetails({ params }) {
   return (
     <div className="min-h-screen py-12 bg-gray-50">
       <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
-        {/* সার্ভিস ইমেজ */}
         <img
           src={service.image}
           alt={service.title}
@@ -64,7 +59,6 @@ export default async function ServiceDetails({ params }) {
             duration you select in the next step.
           </div>
 
-          {/* বুকিং বাটন */}
           <div className="mt-8 flex justify-end">
             <Link
               href="/"
